@@ -1,0 +1,23 @@
+.sidebar {
+    background-color: #0f0f0f;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    position: fixed;
+    top: 4rem;
+    width: 14rem;
+}
+
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    color: white;
+    column-gap: 8px;
+    font-size: 1.1rem;
+    padding: 1rem 1.5rem 1rem 2.5em;
+    text-decoration: none;
+}
+
+.sidebar-icon {
+    padding-right: 0.8rem;
+}

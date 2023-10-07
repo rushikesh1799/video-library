@@ -1,0 +1,6 @@
+.title-and-options1 {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 14px;
+    font-weight: 700;
+}
