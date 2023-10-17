@@ -13,9 +13,11 @@
 }
 
 .brand {
-    align-items: flex-end;
-    column-gap: 5px;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 8px;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .logo-container {
@@ -30,6 +32,8 @@
 }
 
 .brand-name {
+    display: flex;
+    flex-direction: column;
     text-decoration: none;
     color: #ffffff;
     font-size: 1.5rem;
@@ -42,7 +46,7 @@
     height: 2.3rem;
     padding: 6px;
     width: 22rem;
-    border: 1px solid #ffffff;
+    border: 1px solid #fa5a29;
 }
 
 .nav-search-field {
@@ -51,6 +55,7 @@
     font-size: 14px;
     padding: 8px;
     width: 100%;
+    color: #FFF;
 }
 
 .nav-search-field:focus {
@@ -72,7 +77,17 @@
     color: #FFFFFF;
 }
 
+.search-icon {
+    color: #FFF;
+}
+
 .profile-icon {
     color: #ffffff;
     cursor: pointer;
+}
+
+@media only screen and (max-width: 640px) {
+    .searchbar-container {
+        width: 75%;
+    }
 }

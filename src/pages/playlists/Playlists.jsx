@@ -10,9 +10,9 @@ const Playlists = () => {
     const authToken = useSelector((state) => state.auth.token);
     const playlists = useSelector(allPlaylists);
 
-    useEffect(() => {
-        dispatch(getAllPlaylists(authToken));
-    }, [dispatch]);
+    // useEffect(() => {
+    //     dispatch(getAllPlaylists(authToken));
+    // }, [dispatch]);
 
     return (
         <div className="pagewrapper">

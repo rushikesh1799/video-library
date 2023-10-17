@@ -8,15 +8,3 @@
 .middle-content {
     flex-grow: 1;
 }
-
-.videos-container {
-    grid-column-gap: 1rem;
-    -webkit-column-gap: 1rem;
-    column-gap: 1rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
-    margin: 0.5rem 1rem 0.5rem 16rem;
-    grid-row-gap: 1.5rem;
-    row-gap: 1.5rem;
-    /* width: 100%; */
-}

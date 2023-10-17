@@ -7,16 +7,26 @@ import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import HistoryIcon from "@mui/icons-material/History";
 import WatchLaterIcon from "@mui/icons-material/WatchLater";
+import PersonIcon from "@mui/icons-material/Person";
+import { useDispatch } from "react-redux";
+import { setCategory } from "../../features/video/videoSlice";
 
 const Sidebar = () => {
+    const dispatch = useDispatch();
     return (
-        <div>
+        <>
             <aside className="sidebar">
                 <NavLink className="sidebar-item" to="/">
                     <HomeIcon />
                     Home
                 </NavLink>
-                <NavLink className="sidebar-item" to="/videos">
+                <NavLink
+                    className="sidebar-item"
+                    to="/videos"
+                    onClick={() => {
+                        dispatch(setCategory("All"));
+                    }}
+                >
                     <ExploreIcon />
                     Explore
                 </NavLink>
@@ -37,7 +47,40 @@ const Sidebar = () => {
                     Watch Later
                 </NavLink>
             </aside>
-        </div>
+            <div className="mobile-bottom-nav">
+                <NavLink to="/videos" className="mobile-nav-item">
+                    <div className="mobile-nav-item">
+                        <ExploreIcon icon="compass" className="bottom-icon" />
+                        <span>Explore</span>
+                    </div>
+                </NavLink>
+                <NavLink to="/playlists" className="mobile-nav-item">
+                    <div className="mobile-nav-item">
+                        <div className="icon-chip">
+                            <PlaylistAddIcon />
+                        </div>
+                        <span>Playlists</span>
+                    </div>
+                </NavLink>
+                {/* <NavLink to="/uploadvideo" className="mobile-nav-item">
+                        <div className="mobile-nav-item">
+                            <div className="mobile-nav-item">
+                                <FontAwesomeIcon
+                                    icon="upload"
+                                    className="bottom-icon"
+                                />
+                                <span>Upload Video</span>
+                            </div>
+                        </div>
+                    </NavLink> */}
+                <NavLink to="/profile" className="mobile-nav-item">
+                    <div className="mobile-nav-item">
+                        <PersonIcon icon="user" className="bottom-icon" />
+                        <span>Profile</span>
+                    </div>
+                </NavLink>
+            </div>
+        </>
     );
 };
 

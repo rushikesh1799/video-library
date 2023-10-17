@@ -13,9 +13,9 @@ const LikedVideos = () => {
     const authToken = useSelector((state) => state.auth.token);
     const likedVideos = useSelector(allLikedVideos);
 
-    useEffect(() => {
-        dispatch(getAllLikedVideos(authToken));
-    }, [dispatch]);
+    // useEffect(() => {
+    //     dispatch(getAllLikedVideos(authToken));
+    // }, [dispatch]);
 
     return (
         <div className="pagewrapper">

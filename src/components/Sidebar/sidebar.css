@@ -21,3 +21,63 @@
 .sidebar-icon {
     padding-right: 0.8rem;
 }
+
+.mobile-bottom-nav {
+    background-color: #f5f5f5;
+    bottom: 0;
+    display: none;
+    height: 3rem;
+    justify-content: space-around;
+    padding: 5px;
+    position: fixed;
+    width: 100%;
+    z-index: 7;
+    padding: 2rem;
+}
+
+/* .mobile-nav-page {
+    background-color: #000;
+} */
+
+
+.mobile-nav-element {
+    color: black;
+}
+
+.mobile-nav-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+.mobile-nav-item>span {
+    padding-top: 2px;
+    font-size: 8px;
+}
+
+.mobile-nav-options {
+    width: 100%;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+
+@media only screen and (max-width: 640px) {
+    .mobile-bottom-nav {
+        display: flex;
+        font-size: 0.75rem;
+    }
+
+    .brand-name,
+    .profile-icon,
+    .sidebar {
+        display: none;
+    }
+}

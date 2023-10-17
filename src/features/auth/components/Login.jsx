@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import "./auth.css";
-import { loginHandler } from "../authSlice";
+import useLoginHandler from "../Hooks/useLoginHandler";
 
 const Login = () => {
     const dispatch = useDispatch();
-
+    // console.log(useLoginHandler());
+    const { loginHandler } = useLoginHandler();
+    // console.log("loginHandler", loginHandler);
     const [login, setLogin] = useState({
         email: "",
         password: "",

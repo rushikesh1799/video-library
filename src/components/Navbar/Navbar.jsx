@@ -4,6 +4,9 @@ import PersonIcon from "@mui/icons-material/Person";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 
+import YouTubeIcon from "@mui/icons-material/YouTube";
+import { Link } from "react-router-dom";
+
 const Navbar = () => {
     const authToken = useSelector((state) => state.auth.token);
 
@@ -12,9 +15,11 @@ const Navbar = () => {
     return (
         <nav className="nav-container">
             <div className="brand">
-                <a href="/" className="brand-name">
-                    Tech Library
-                </a>
+                <YouTubeIcon sx={{ color: "#FFF" }} fontSize="large" />
+                <Link to="/" className="brand-name">
+                    <span>WebMentor's</span>
+                    <span>Library</span>
+                </Link>
             </div>
             <form className="searchbar-container">
                 <input
@@ -23,7 +28,7 @@ const Navbar = () => {
                     className="nav-search-field"
                 />
                 <button className="btn-no-decoration text-white" type="submit">
-                    <i className="fa fa-search" aria-hidden="true"></i>
+                    <i className="fa fa-search search-icon" aria-hidden="true"></i>
                 </button>
             </form>
             <div

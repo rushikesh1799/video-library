@@ -14,9 +14,9 @@ const WatchLater = () => {
     const authToken = useSelector((state) => state.auth.token);
     const watchLaterVideos = useSelector(getAllWatchlaterVideos);
 
-    useEffect(() => {
-        dispatch(getAllWatchLater(authToken));
-    }, [dispatch]);
+    // useEffect(() => {
+    //     dispatch(getAllWatchLater(authToken));
+    // }, [dispatch]);
 
     return (
         <div className="pagewrapper">

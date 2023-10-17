@@ -16,9 +16,9 @@ const History = () => {
     const authToken = useSelector((state) => state.auth.token);
     const historyVideos = useSelector(allHistoryVideos);
 
-    useEffect(() => {
-        dispatch(getAllHistoryVideos(authToken));
-    }, [dispatch]);
+    // useEffect(() => {
+    //     dispatch(getAllHistoryVideos(authToken));
+    // }, [dispatch]);
 
     return (
         <div className="pagewrapper">

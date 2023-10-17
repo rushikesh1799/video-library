@@ -33,7 +33,7 @@ export const getAllLikedVideos = createAsyncThunk(
                 );
             }
         } catch (error) {
-            console.log(error);
+            // console.log(error);
         }
     }
 );
@@ -385,7 +385,15 @@ export const userSlice = createSlice({
         loading: false,
         status: "idle",
     },
-    reducers: {},
+    reducers: {
+        setInitialUserData(state, action) {
+            state.likes = action.payload.likes;
+            state.history = action.payload.history;
+            state.playlists = action.payload.playlists;
+            state.watchlater = action.payload.watchlater;
+            state.notes = action.payload.notes;
+        },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(getAllLikedVideos.pending, (state) => {
@@ -471,12 +479,13 @@ export const userSlice = createSlice({
     },
 });
 
-export const {} = userSlice.actions;
+export const { setInitialUserData } = userSlice.actions;
 
 export const getAllWatchlaterVideos = (state) => state.user.watchlater;
 export const allLikedVideos = (state) => state.user.likes;
 export const allPlaylists = (state) => state.user.playlists;
 export const allHistoryVideos = (state) => state.user.history;
 export const allNotes = (state) => state.user.notes;
+export const userState = (state) => state.user;
 
 export default userSlice.reducer;

@@ -7,11 +7,7 @@ import {
     increaseViewCount,
     selectAllVideos,
 } from "../../features/video/videoSlice";
-import VideoCard from "../videoListing/VideoCard";
 import "./videodetails.css";
-import ThumbUpIcon from "@mui/icons-material/ThumbUp";
-import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
-import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 import ShareIcon from "@mui/icons-material/Share";
 import {
     addVideoToHistory,
@@ -24,9 +20,6 @@ import LikeButton from "./LikeButton/LikeButton";
 import AddNewPlaylistModal from "./AddNewPlaylist/AddNewPlaylistModal";
 import ReactPlayer from "react-player/youtube";
 import { CircularProgress } from "@mui/material";
-import EditIcon from "@mui/icons-material/Edit";
-import AccessTimeFilledIcon from "@mui/icons-material/AccessTimeFilled";
-import DeleteIcon from "@mui/icons-material/Delete";
 import SingleNote from "./Notes/SingleNote";
 import EditNote from "./Notes/EditNote";
 
@@ -48,6 +41,7 @@ const VideoDetails = () => {
 
     const videoToRender = videos?.find((video) => video._id === videoId);
     const videoNotes = notes.filter((note) => note.videoId === videoId);
+    
     return (
         <div className="pagewrapper">
             <Navbar />

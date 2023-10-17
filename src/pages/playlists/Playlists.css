@@ -59,15 +59,6 @@
     color: #FFFFFF;
 }
 
-.btn {
-    background-color: #000000;
-    border-radius: 0.625rem;
-    border: none;
-    cursor: pointer;
-    height: 2rem;
-    width: 8rem;
-    margin: 0.625rem;
-}
 
 .no-videos-text {
     font-weight: 600;

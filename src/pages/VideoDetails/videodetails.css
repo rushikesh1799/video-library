@@ -231,3 +231,11 @@ button:disabled {
         margin: unset;
     }
 }
+
+@media only screen and (max-width: 640px) {
+
+    .flex-column-start,
+    .margin-container {
+        margin-left: 1rem;
+    }
+}
