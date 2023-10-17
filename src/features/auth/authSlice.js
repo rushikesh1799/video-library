@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
 import { loginService, signUpService } from "../../services/authServices";
 
 export const loginHandler = createAsyncThunk(
@@ -8,6 +7,7 @@ export const loginHandler = createAsyncThunk(
         try {
             const { data, status } = await loginService(userLoginData);
             const { user } = data;
+            console.log("user", user);
             if (status === 201) {
                 localStorage.setItem("authToken", user.token);
                 localStorage.setItem(
@@ -19,6 +19,7 @@ export const loginHandler = createAsyncThunk(
                     })
                 );
             }
+            return user;
         } catch (error) {
             console.log(error);
         }
@@ -52,11 +53,15 @@ export const signUpHandler = createAsyncThunk(
 export const authSlice = createSlice({
     name: "auth",
     initialState: {
-        token: localStorage.getItem("authToken") || null,
-        user: JSON.parse(localStorage.getItem("user")) || null,
+        token: localStorage.getItem("authToken"),
+        user: JSON.parse(localStorage.getItem("user")),
         status: "idle",
     },
-    reducers: {},
+    reducers: {
+        setAuthToken(state, action) {
+            state.token = action.payload;
+        },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(signUpHandler.pending, (state) => {
@@ -78,6 +83,6 @@ export const authSlice = createSlice({
     },
 });
 
-export const {} = authSlice.actions;
+export const { setAuthToken } = authSlice.actions;
 
 export default authSlice.reducer;

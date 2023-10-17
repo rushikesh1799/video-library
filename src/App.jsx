@@ -4,9 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes } from "react-router";
 import Signup from "./features/auth/components/Signup";
 import Login from "./features/auth/components/Login";
-import { NavLink } from "react-router-dom";
 import Home from "./pages/Home/Home";
-import Sidebar from "./components/Sidebar/Sidebar";
 import History from "./pages/history/History";
 import LikedVideos from "./pages/likedVideos/LikedVideos";
 import Playlists from "./pages/playlists/Playlists";
@@ -16,13 +14,15 @@ import Navbar from "./components/Navbar/Navbar";
 import Account from "./pages/Account/Account";
 import VideoDetails from "./pages/VideoDetails/VideoDetails";
 import {
+    getAllHistoryVideos,
     getAllLikedVideos,
     getAllNotes,
     getAllPlaylists,
     getAllWatchLater,
 } from "./features/user/userSlice";
-import { getAllWatchLaterService } from "./services/userServices";
 import SinglePlaylist from "./pages/playlists/SinglePlaylist";
+import MobileNav from "./components/MobileNav/MobileNav";
+import { PrivateRoute } from "./components/PrivateRoute/PrivateRoute";
 
 function App() {
     const dispatch = useDispatch();
@@ -31,11 +31,14 @@ function App() {
     const authToken = useSelector((state) => state.auth.token);
 
     useEffect(() => {
-        dispatch(getAllLikedVideos(authToken));
-        dispatch(getAllWatchLater(authToken));
-        dispatch(getAllPlaylists(authToken));
-        dispatch(getAllNotes(authToken));
-    }, [dispatch]);
+        if (authToken) {
+            dispatch(getAllLikedVideos(authToken));
+            dispatch(getAllWatchLater(authToken));
+            dispatch(getAllPlaylists(authToken));
+            dispatch(getAllNotes(authToken));
+            dispatch(getAllHistoryVideos(authToken));
+        }
+    }, [dispatch, authToken]);
 
     useEffect(() => {
         console.log(state);
@@ -52,16 +55,56 @@ function App() {
                     path="/videos/:videoId"
                     element={<VideoDetails />}
                 ></Route>
-                <Route path="/playlists" element={<Playlists />}></Route>
+                <Route
+                    path="/playlists"
+                    element={
+                        <PrivateRoute>
+                            <Playlists />
+                        </PrivateRoute>
+                    }
+                ></Route>
                 <Route
                     path="/playlists/:playlistId"
-                    element={<SinglePlaylist />}
+                    element={
+                        <PrivateRoute>
+                            <SinglePlaylist />
+                        </PrivateRoute>
+                    }
                 ></Route>
-                <Route path="/liked" element={<LikedVideos />}></Route>
-                <Route path="/history" element={<History />}></Route>
-                <Route path="/watchlater" element={<WatchLater />}></Route>
+                <Route
+                    path="/liked"
+                    element={
+                        <PrivateRoute>
+                            <LikedVideos />
+                        </PrivateRoute>
+                    }
+                ></Route>
+                <Route
+                    path="/history"
+                    element={
+                        <PrivateRoute>
+                            <History />
+                        </PrivateRoute>
+                    }
+                ></Route>
+                <Route
+                    path="/watchlater"
+                    element={
+                        <PrivateRoute>
+                            <WatchLater />
+                        </PrivateRoute>
+                    }
+                ></Route>
                 <Route path="/navbar" element={<Navbar />}></Route>
-                <Route path="/account" element={<Account />}></Route>
+                <Route
+                    path="/account"
+                    element={
+                        <PrivateRoute>
+                            <Account />
+                        </PrivateRoute>
+                    }
+                ></Route>
+                <Route path="/profile" element={<MobileNav />}></Route>
             </Routes>
         </>
     );
