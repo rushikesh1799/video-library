@@ -59,10 +59,19 @@ export const videoSlice = createSlice({
     initialState: {
         videos: [],
         categories: [],
+        category: "All",
+        sortBy: "",
         status: "idle",
         error: null,
     },
-    reducers: {},
+    reducers: {
+        setCategory(state, action) {
+            state.category = action.payload;
+        },
+        setSortBy(state, action) {
+            state.sortBy = action.payload;
+        },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(getAllVideos.pending, (state) => {
@@ -87,6 +96,6 @@ export const videoSlice = createSlice({
 
 export const selectAllVideos = (state) => state.video.videos;
 
-export const {} = videoSlice.actions;
+export const { setCategory, setSortBy } = videoSlice.actions;
 
 export default videoSlice.reducer;
