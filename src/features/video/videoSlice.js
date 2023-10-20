@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {
     getAllCategoriesService,
+    getAllSearchFilterVideosService,
     getAllVideosService,
     increaseViewCountService,
 } from "../../services/videoServices";
@@ -17,6 +18,25 @@ export const getAllVideos = createAsyncThunk("video/getAllVideos", async () => {
         console.log(error);
     }
 });
+
+export const getAllSearchFilterVideos = createAsyncThunk(
+    "video/getAllSearchFilterVideos",
+    async (searchText) => {
+        try {
+            const { data, status } = await getAllSearchFilterVideosService(
+                searchText
+            );
+            if (status === 200) {
+                console.log(data.videos);
+                return data.videos;
+            } else {
+                console.log("Couldn't get the videos, Please try again later!");
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+);
 
 export const getAllVideoCategories = createAsyncThunk(
     "video/getAllVideoCategories",
@@ -87,6 +107,9 @@ export const videoSlice = createSlice({
             })
             .addCase(getAllVideoCategories.fulfilled, (state, action) => {
                 state.categories = action.payload;
+            })
+            .addCase(getAllSearchFilterVideos.fulfilled, (state, action) => {
+                state.videos = action.payload;
             })
             .addCase(increaseViewCount.fulfilled, (state, action) => {
                 state.videos = action.payload;

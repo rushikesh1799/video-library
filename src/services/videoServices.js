@@ -17,3 +17,10 @@ export const increaseViewCountService = async (videoId) => {
     );
     return response;
 };
+
+export const getAllSearchFilterVideosService = async (searchText) => {
+    const response = await axios.get(
+        `${API_URL}/api/videos/search?title=${searchText}`
+    );
+    return response;
+};
