@@ -34,6 +34,7 @@ const History = () => {
                     </div>
                     <div>{historyVideos.length} video(s)</div>
                 </div>
+                <hr />
                 {historyVideos.length === 0 ? (
                     <div className="flex-column-center margin-container no-playlist-container1">
                         <div className="no-videos-text">
