@@ -19,6 +19,7 @@ import {
     removeWatchLaterVideoService,
     updateNoteService,
 } from "../../services/userServices";
+import { ReactToastify } from "../../utilities/ReactTostify";
 
 export const getAllLikedVideos = createAsyncThunk(
     "video/getAllLikedVideos",
@@ -80,6 +81,7 @@ export const likeVideo = createAsyncThunk(
         try {
             const { data, status } = await likeVideoService(token, video);
             if (status === 200) {
+                ReactToastify("Added to liked videos", "success");
                 return data.likes;
             } else {
                 console.log(
@@ -101,6 +103,7 @@ export const deleteLikedVideo = createAsyncThunk(
                 videoId
             );
             if (status === 200) {
+                ReactToastify("Removed from liked videos", "success");
                 return data.likes;
             } else {
                 console.log(
@@ -119,6 +122,7 @@ export const addToWatchLater = createAsyncThunk(
         try {
             const { data, status } = await addToWatchLaterService(token, video);
             if (status === 200) {
+                ReactToastify("Added to watch later", "success");
                 return data.watchlater;
             } else {
                 console.log(
@@ -140,6 +144,7 @@ export const removeWatchLater = createAsyncThunk(
                 videoId
             );
             if (status === 200) {
+                ReactToastify("Removed from watch later", "success");
                 return data.watchlater;
             } else {
                 console.log(
@@ -393,6 +398,21 @@ export const userSlice = createSlice({
             state.watchlater = action.payload.watchlater;
             state.notes = action.payload.notes;
         },
+        setLikes(state, action) {
+            state.likes = action.payload;
+        },
+        setHistory(state, action) {
+            state.history = action.payload;
+        },
+        setPlaylists(state, action) {
+            state.playlists = action.payload;
+        },
+        setWatchlater(state, action) {
+            state.watchlater = action.payload;
+        },
+        setNotes(state, action) {
+            state.notes = action.payload;
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -479,7 +499,14 @@ export const userSlice = createSlice({
     },
 });
 
-export const { setInitialUserData } = userSlice.actions;
+export const {
+    setInitialUserData,
+    setLikes,
+    setHistory,
+    setPlaylists,
+    setWatchlater,
+    setNotes,
+} = userSlice.actions;
 
 export const getAllWatchlaterVideos = (state) => state.user.watchlater;
 export const allLikedVideos = (state) => state.user.likes;
