@@ -56,10 +56,17 @@ export const authSlice = createSlice({
         token: localStorage.getItem("authToken"),
         user: JSON.parse(localStorage.getItem("user")),
         status: "idle",
+        error: "",
     },
     reducers: {
         setAuthToken(state, action) {
             state.token = action.payload;
+        },
+        setAuthUser(state, action) {
+            state.user = action.payload;
+        },
+        setLoginError(state, action) {
+            state.error = action.payload.message;
         },
     },
     extraReducers: (builder) => {
@@ -83,6 +90,7 @@ export const authSlice = createSlice({
     },
 });
 
-export const { setAuthToken } = authSlice.actions;
+export const { setAuthToken, setAuthUser, setLoginError } = authSlice.actions;
 
 export default authSlice.reducer;
+//session expired, Please login again.
