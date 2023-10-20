@@ -6,6 +6,7 @@ import Sidebar from "../../components/Sidebar/Sidebar";
 import PlaylistCard from "./PlaylistCard";
 
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
+import { NavLink } from "react-router-dom";
 
 const Playlists = () => {
     const dispatch = useDispatch();
@@ -30,11 +31,28 @@ const Playlists = () => {
                     </div>
                 </div>
                 <hr />
-                <div className="videos-container">
-                    {playlists.map((playlist) => (
-                        <PlaylistCard key={playlist._id} playlist={playlist} />
-                    ))}
-                </div>
+                {playlists.length === 0 ? (
+                    <div className="flex-column-center margin-container no-playlist-container1">
+                        <div className="no-videos-text">
+                            No playlists yet, create one and add videos now.
+                        </div>
+                        <NavLink
+                            className="btn btn-primary no-link-decoration inline-flex-center"
+                            to="/videos"
+                        >
+                            Explore
+                        </NavLink>
+                    </div>
+                ) : (
+                    <div className="videos-container">
+                        {playlists.map((playlist) => (
+                            <PlaylistCard
+                                key={playlist._id}
+                                playlist={playlist}
+                            />
+                        ))}
+                    </div>
+                )}
             </div>
         </div>
     );

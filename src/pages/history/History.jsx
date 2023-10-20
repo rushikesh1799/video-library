@@ -37,9 +37,7 @@ const History = () => {
                 <hr />
                 {historyVideos.length === 0 ? (
                     <div className="flex-column-center margin-container no-playlist-container1">
-                        <div className="no-videos-text">
-                            There are no videos added in this playlist.
-                        </div>
+                        <div className="no-videos-text">No videos watched.</div>
                         <NavLink
                             className="btn btn-primary no-link-decoration inline-flex-center"
                             to="/videos"
