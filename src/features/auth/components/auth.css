@@ -4,8 +4,86 @@
     gap: 1rem;
 }
 
-.form_input {
+.header2 {
+    padding-top: 1rem;
+    font-size: 24px;
+}
+
+.form-input {
     display: flex;
-    gap: 8px;
-    justify-content: space-between;
+    width: 100%;
+    margin: 1rem;
+}
+
+.auth-container {
+    border-radius: 5px;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    margin: 1rem 1rem 1rem 14rem;
+    grid-row-gap: 0.5rem;
+    row-gap: 0.5rem;
+}
+
+.password-input {
+    position: relative;
+}
+
+.input-label {
+    align-items: center;
+    color: var(--text-color);
+    display: inline-flex;
+    justify-content: flex-start;
+    width: 30%;
+}
+
+.input-primary {
+    background-color: transparent;
+    display: block;
+    font-size: 13px;
+    width: 65%;
+    border-radius: 0.625rem;
+    height: 2rem;
+    outline: none;
+    padding: 0rem 0.625rem;
+}
+
+.guest-button {
+    margin: 1rem 0;
+}
+
+.btn-link-primary1 {
+    color: #fa5a29;
+    border-bottom: 1px solid #fa5a29;
+    padding: 0 5px;
+    text-decoration: none;
+}
+
+.form-auth {
+    margin: 0.5rem;
+    width: 25rem;
+    color: #646464;
+    padding: 1rem;
+}
+
+.btn-auth {
+    border-radius: 0.625rem;
+    border: none;
+    cursor: pointer;
+    height: 2rem;
+    color: #FFF;
+    font-weight: 600;
+    width: 100%;
+    background-color: #fa5a29;
+}
+
+.account-line-margin {
+    margin-top: 8px;
+}
+
+@media only screen and (max-width: 640px) {
+    .auth-container {
+        padding: 1rem;
+        margin-left: 1rem;
+    }
 }

@@ -1,0 +1,38 @@
+.logout-container {
+    border-radius: 5px;
+    border: 1px solid black;
+    height: fit-content;
+    margin-left: 7rem;
+    margin-top: 3rem;
+    max-width: 30rem;
+    padding: 2rem;
+    row-gap: 1rem;
+    align-items: start;
+}
+
+.row-format {
+    column-gap: 2rem;
+    display: flex;
+}
+
+.profile-column {
+    row-gap: 1rem;
+}
+
+.profile-details {
+    column-gap: 2rem;
+}
+
+.logout-btn {
+    background-color: #FFF;
+    border: 1px solid #fa5a29;
+    color: #fa5a29;
+    margin-left: 0;
+    margin-top: 0;
+}
+
+@media only screen and (max-width: 640px) {
+    .logout-container {
+        margin-left: unset;
+    }
+}

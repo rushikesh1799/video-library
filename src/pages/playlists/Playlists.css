@@ -61,7 +61,8 @@
 
 
 .no-videos-text {
-    font-weight: 600;
+    font-size: 1.25rem;
+    /* font-weight: 600; */
 }
 
 .single-playlist-header {
@@ -78,5 +79,4 @@
     display: flex;
     align-items: center;
     gap: 4px;
-    font-weight: 600;
 }
