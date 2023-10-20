@@ -23,12 +23,18 @@ import {
 import SinglePlaylist from "./pages/playlists/SinglePlaylist";
 import MobileNav from "./components/MobileNav/MobileNav";
 import { PrivateRoute } from "./components/PrivateRoute/PrivateRoute";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
     const dispatch = useDispatch();
 
-    const state = useSelector((state) => state.user);
+    const state = useSelector((state) => state.auth);
     const authToken = useSelector((state) => state.auth.token);
+
+    useEffect(() => {
+        console.log(state);
+    }, [state]);
 
     useEffect(() => {
         if (authToken) {
@@ -45,7 +51,7 @@ function App() {
     }, [state]);
 
     return (
-        <>
+        <div className="App">
             <Routes>
                 <Route path="/" element={<Home />}></Route>
                 <Route path="/signup" element={<Signup />}></Route>
@@ -106,7 +112,8 @@ function App() {
                 ></Route>
                 <Route path="/profile" element={<MobileNav />}></Route>
             </Routes>
-        </>
+            <ToastContainer />
+        </div>
     );
 }
 

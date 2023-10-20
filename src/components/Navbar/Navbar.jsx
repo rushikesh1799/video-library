@@ -17,7 +17,7 @@ const Navbar = () => {
             <div className="brand">
                 <YouTubeIcon sx={{ color: "#FFF" }} fontSize="large" />
                 <Link to="/" className="brand-name">
-                    <span>WebMentor's</span>
+                    <span>Developer's</span>
                     <span>Library</span>
                 </Link>
             </div>
