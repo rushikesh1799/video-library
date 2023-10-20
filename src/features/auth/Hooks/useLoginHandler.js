@@ -3,7 +3,8 @@ import { loginService } from "../../../services/authServices";
 import { useDispatch } from "react-redux";
 import { setInitialUserData } from "../../user/userSlice";
 import { useNavigate } from "react-router";
-import { setAuthToken } from "../authSlice";
+import { setAuthToken, setAuthUser, setLoginError } from "../authSlice";
+import { ReactToastify } from "../../../utilities/ReactTostify";
 
 const useLoginHandler = () => {
     const dispatch = useDispatch();
@@ -36,9 +37,20 @@ const useLoginHandler = () => {
                     })
                 );
                 dispatch(setAuthToken(user.token));
+                dispatch(
+                    setAuthUser({
+                        firstName: user.firstName,
+                        lastName: user.lastName,
+                        email: user.email,
+                    })
+                );
                 navigate("/videos");
+                ReactToastify("Log In Successful", "success");
             } catch (error) {
-                console.log(error);
+                ReactToastify(error.response.data.message, "error");
+                dispatch(
+                    setLoginError({ message: error.response.data.message })
+                );
             }
         }
     );
