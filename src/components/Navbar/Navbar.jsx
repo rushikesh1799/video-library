@@ -35,7 +35,7 @@ const Navbar = () => {
 
     return (
         <nav className="nav-container">
-            <div className="brand">
+            <div className="brand" onClick={() => navigate("/")}>
                 <YouTubeIcon sx={{ color: "#FFF" }} fontSize="large" />
                 <Link to="/" className="brand-name">
                     <span>Developer's</span>

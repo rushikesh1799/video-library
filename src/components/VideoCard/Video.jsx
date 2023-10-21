@@ -28,14 +28,15 @@ const Video = ({ video }) => {
             <div className="title-and-options1">
                 <span>{video.title}</span>
                 <div
-                    onClick={() =>
+                    onClick={(e) => {
+                        e.stopPropagation();
                         dispatch(
                             deleteLikedVideo({
                                 token: authToken,
                                 videoId: video._id,
                             })
-                        )
-                    }
+                        );
+                    }}
                 >
                     <DeleteIcon />
                 </div>
