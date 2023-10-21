@@ -105,8 +105,8 @@ const Login = () => {
                             onClick={(e) => {
                                 setLogin((prev) => ({
                                     ...prev,
-                                    email: e.target.value,
-                                    password: e.target.value,
+                                    email: "johndoe@gmail.com",
+                                    password: "john123",
                                 }));
                             }}
                         >
@@ -121,7 +121,7 @@ const Login = () => {
                             >
                                 Create One
                             </Link>
-                        </div> 
+                        </div>
                     </form>
                 </div>
             </div>
