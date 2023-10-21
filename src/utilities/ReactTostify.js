@@ -1,8 +1,6 @@
 import { Slide, toast } from "react-toastify";
 
 export const ReactToastify = (msg, type) => {
-    console.log("hello");
-
     const options = {
         position: "top-right",
         autoClose: 3000,

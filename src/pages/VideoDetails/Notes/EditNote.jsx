@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addNote, updateNote } from "../../../features/user/userSlice";
+import { useNavigate } from "react-router";
+import { ReactToastify } from "../../../utilities/ReactTostify";
 
 const EditNote = ({ videoRef, currentvideo, editMode, setEditMode, note }) => {
     const dispatch = useDispatch();
     const authToken = useSelector((state) => state.auth.token);
+    const navigate = useNavigate();
 
     const [noteTitle, setNoteTitle] = useState(() =>
         editMode ? note.title : ""
@@ -57,7 +60,8 @@ const EditNote = ({ videoRef, currentvideo, editMode, setEditMode, note }) => {
             setNoteTitle("");
             setNoteDescription("");
         } else {
-            console.log("please login first!");
+            navigate("/login");
+            ReactToastify("please login first to add note!", "info");
         }
     };
 

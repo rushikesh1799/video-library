@@ -166,6 +166,7 @@ export const createNewPlaylist = createAsyncThunk(
                 playlist
             );
             if (status === 200) {
+                ReactToastify("Playlist created successfully!", "success");
                 return data.playlists;
             } else {
                 console.log(
@@ -187,6 +188,7 @@ export const removePlaylist = createAsyncThunk(
                 playlistId
             );
             if (status === 200) {
+                ReactToastify("Playlist deleted successfully!", "success");
                 return data.playlists;
             } else {
                 console.log(
@@ -209,6 +211,7 @@ export const addVideoToPlaylist = createAsyncThunk(
                 video
             );
             if (status === 200) {
+                ReactToastify("Video added to playlist!", "success");
                 return data.playlists;
             } else {
                 console.log(
@@ -231,6 +234,7 @@ export const removeVideoFromPlaylist = createAsyncThunk(
                 videoId
             );
             if (status === 200) {
+                ReactToastify("Video removed from playlist!", "success");
                 return data.playlists;
             } else {
                 console.log(
@@ -291,6 +295,7 @@ export const removeVideoFromHistory = createAsyncThunk(
                 videoId
             );
             if (status === 200) {
+                ReactToastify("Video deleted from history!", "success");
                 return data.history;
             } else {
                 console.log(
@@ -327,6 +332,7 @@ export const addNote = createAsyncThunk(
         try {
             const { data, status } = await addNoteService(token, note);
             if (status === 200) {
+                ReactToastify("Note added successfully!", "success");
                 return data.notes;
             } else {
                 console.log(
@@ -345,6 +351,7 @@ export const removeNote = createAsyncThunk(
         try {
             const { data, status } = await removeNoteService(token, noteId);
             if (status === 200) {
+                ReactToastify("Note removed successfully!", "success");
                 return data.notes;
             } else {
                 console.log(
@@ -367,6 +374,7 @@ export const updateNote = createAsyncThunk(
                 noteId
             );
             if (status === 200) {
+                ReactToastify("Note updated successfully!", "success");
                 return data.notes;
             } else {
                 console.log(

@@ -47,14 +47,15 @@ const PlaylistCard = ({ playlist }) => {
             <div className="title-and-options1">
                 <span>{playlist.name}</span>
                 <div
-                    onClick={() =>
+                    onClick={(e) => {
+                        e.stopPropagation();
                         dispatch(
                             removePlaylist({
                                 token: authToken,
                                 playlistId: playlist._id,
                             })
-                        )
-                    }
+                        );
+                    }}
                 >
                     <DeleteIcon sx={{ color: "red" }} />
                 </div>
